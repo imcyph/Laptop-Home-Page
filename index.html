@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Back</title>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission
+        redirectToBing();
+      }
+    });
+  });
+
+  function redirectToBing() {
+    var input = document.getElementById('searchBox').value;
+    window.location.href = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=satoshi@1,2&display=swap">
+</head>
+<body>
+  <h1>Welcome back <span>Cyph</span>, Happy <span id="dayOfWeek"></span>!</h1>
+  <input type="text" id="searchBox" class="searchBox" placeholder="Search...">
+  <!-- The search button is now removed as it's no longer necessary -->
+
+  <script>
+    // Get the current day of the week
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var now = new Date();
+    var day = days[now.getDay()];
+    document.getElementById('dayOfWeek').textContent = day;
+  </script>
+</body>
+</html>
